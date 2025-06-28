@@ -1,18 +1,19 @@
-class Contact {
+import * as Enums from "../utilities/enums/ContactEnums";
+class ClassContact {
   id: number;
-  type: string;
+  type: Enums.TypeContact;
   name: string;
   email: string;
-  contact: string;
+  lastName: string;
   phoneNumber: number;
   favorite: boolean;
 
   constructor(
     id: number,
-    type: string,
+    type: Enums.TypeContact,
     name: string,
     email: string,
-    contact: string,
+    lastName: string,
     phoneNumber: number,
     favorite: boolean
   ) {
@@ -20,10 +21,10 @@ class Contact {
     this.type = type;
     this.name = name;
     this.email = email;
-    this.contact = contact;
+    this.lastName = lastName;
     this.phoneNumber = phoneNumber;
     this.favorite = favorite;
   }
 }
 
-export default Contact;
+export default ClassContact;

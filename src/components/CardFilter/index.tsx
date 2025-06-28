@@ -1,9 +1,10 @@
 import { MdFamilyRestroom } from "react-icons/md";
+import * as Enums from "../../utilities/enums/ContactEnums";
 import * as S from "./styled";
 
 type PropsCard = {
     label: string;
-    type: "Familia" | "Trabalho" | "Pessoal" | "Amigo(a)" | "Todos";
+    type: Enums.TypeContact;
     counter: number;
     hasActive: boolean;
 };

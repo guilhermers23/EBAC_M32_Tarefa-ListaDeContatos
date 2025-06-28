@@ -30,10 +30,6 @@ export const HeaderContact = styled.div`
   margin: 10px;
 `;
 
-export const Email = styled.p`
-  color: var(--color-gray);
-`;
-
 export const Avatar = styled.span`
   align-items: center;
   gap: 5px;
@@ -44,10 +40,19 @@ export const TitleContact = styled.h3`
   font-weight: bold;
 `;
 
-export const Phone = styled.p`
+export const Phone = styled.textarea`
   font-size: 18px;
   line-height: 24px;
+  height: 25px;
   font-family: var(--font-mono);
+  background-color: transparent;
+  border: none;
+  resize: none;
+`;
+
+export const Email = styled(Phone)`
+  color: var(--color-gray);
+  width: 300px;
 `;
 
 export const ActionsBar = styled.div`
