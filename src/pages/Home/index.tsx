@@ -5,7 +5,7 @@ import * as GS from "../../styles";
 const Home = () => {
     return (
         <GS.Container>
-            <Sidebar />
+            <Sidebar showFilter />
             <ContactList />
         </GS.Container>
     )

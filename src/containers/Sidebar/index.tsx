@@ -1,20 +1,54 @@
+import { useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { MdFamilyRestroom, MdOutlineWork } from "react-icons/md";
+import { IoMdContacts } from "react-icons/io";
+import { LiaUserFriendsSolid } from "react-icons/lia";
+import { RiContactsFill } from "react-icons/ri";
+import type { RootReducer } from "../../store";
 import CardFilter from "../../components/CardFilter";
+import { changeTerm } from "../../store/reducers/filter";
+import * as Enums from "../../utilities/enums/ContactEnums";
 import * as S from "./styled";
 import * as GS from "../../styles";
 
-const Sidebar = () => {
+type PropsSidebar = { showFilter: boolean; }
+
+const Sidebar = ({ showFilter }: PropsSidebar) => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const { term } = useSelector((state: RootReducer) => state.filter);
+
+    const onChangeTerm = (event: React.ChangeEvent<HTMLInputElement>) => {
+        dispatch(changeTerm(event.target.value))
+    };
+
     return (
         <S.Aside>
-            <div>
-                <GS.Input type="text" placeholder="Buscar Contato" />
-                <S.Filters>
-                    <CardFilter counter={45} label="Todos" type="Todos" hasActive={true} />
-                    <CardFilter counter={5} hasActive={false} label="Familia" type="Familia" />
-                    <CardFilter counter={10} hasActive={false} label="Trabalho" type="Trabalho" />
-                    <CardFilter counter={15} hasActive={false} label="Pessoal" type="Pessoal" />
-                    <CardFilter counter={20} hasActive={false} label="Amigo(a)" type="Amigo(a)" />
-                </S.Filters>
-            </div>
+            {showFilter ? (
+
+                <div>
+                    <GS.Input type="text" placeholder="Buscar Contato"
+                        value={term} onChange={onChangeTerm} />
+                    <S.Filters>
+                        <CardFilter label="Todos" icon={<IoMdContacts size={25} />}
+                        />
+                        <CardFilter label="Pessoal" icon={<RiContactsFill size={25} />}
+                            typeValue={Enums.TypeContact.PESSOAL}
+                        />
+                        <CardFilter label="Familia" icon={<MdFamilyRestroom size={25} />}
+                            typeValue={Enums.TypeContact.FAMILIA}
+                        />
+                        <CardFilter label="Trabalho" icon={<MdOutlineWork size={25} />}
+                            typeValue={Enums.TypeContact.TRABALHO}
+                        />
+                        <CardFilter label="Amigo(a)" icon={<LiaUserFriendsSolid size={25} />}
+                            typeValue={Enums.TypeContact.AMIGO}
+                        />
+                    </S.Filters>
+                </div>
+            ) : (
+                <GS.Button onClick={() => navigate("/")}>Voltar para lista</GS.Button>
+            )}
         </S.Aside>
     )
 };
