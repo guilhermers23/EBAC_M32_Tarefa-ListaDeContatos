@@ -11,6 +11,12 @@ const GlobalStyled = createGlobalStyle`
   --color-green: #abdb25;
   --color-white: #ffffff;
   --color-black: #000000;
+  --color-red: #ed3232;
+
+  --cor-amigo: #025685;
+  --cor-trabalho: #1810eb;
+  --cor-familia: #eb10b0;
+  --cor-pessoal: #069959;
 
   background-color: var(--color-gray3);
 }
@@ -35,6 +41,43 @@ export const Main = styled.main`
   padding: 0 40px;
   height: 100vh;
   overflow-y: scroll;
+`;
+
+export const Title = styled.h2`
+  display: block;
+  margin: 48px 0;
+  font-size: 18px;
+  font-weight: bold;
+`;
+
+export const Input = styled.input`
+  width: 100%;
+  padding: 8px;
+  background-color: #fff;
+  font-weight: bold;
+  color: #666666;
+  border-color: #666666;
+  border-radius: 5px;
+`;
+
+export const Button = styled.button`
+  font-weight: bold;
+  font-size: 12px;
+  color: #fff;
+  padding: 8px 12px;
+  border: none;
+  background-color: #2f3640;
+  border-radius: 8px;
+  margin-right: 8px;
+  cursor: pointer;
+`;
+
+export const SaveButton = styled(Button)`
+  background-color: var(--color-green);
+`;
+
+export const RedButton = styled(Button)`
+  background-color: var(--color-red);
 `;
 
 export default GlobalStyled;
