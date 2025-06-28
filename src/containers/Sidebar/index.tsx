@@ -19,13 +19,12 @@ const Sidebar = ({ showFilter }: PropsSidebar) => {
     const { term } = useSelector((state: RootReducer) => state.filter);
 
     const onChangeTerm = (event: React.ChangeEvent<HTMLInputElement>) => {
-        dispatch(changeTerm(event.target.value))
+        dispatch(changeTerm(event.target.value));
     };
 
     return (
         <S.Aside>
             {showFilter ? (
-
                 <div>
                     <GS.Input type="text" placeholder="Buscar Contato"
                         value={term} onChange={onChangeTerm} />
@@ -33,16 +32,16 @@ const Sidebar = ({ showFilter }: PropsSidebar) => {
                         <CardFilter label="Todos" icon={<IoMdContacts size={25} />}
                         />
                         <CardFilter label="Pessoal" icon={<RiContactsFill size={25} />}
-                            typeValue={Enums.TypeContact.PESSOAL}
+                            value={Enums.TypeContact.PESSOAL}
                         />
                         <CardFilter label="Familia" icon={<MdFamilyRestroom size={25} />}
-                            typeValue={Enums.TypeContact.FAMILIA}
+                            value={Enums.TypeContact.FAMILIA}
                         />
                         <CardFilter label="Trabalho" icon={<MdOutlineWork size={25} />}
-                            typeValue={Enums.TypeContact.TRABALHO}
+                            value={Enums.TypeContact.TRABALHO}
                         />
                         <CardFilter label="Amigo(a)" icon={<LiaUserFriendsSolid size={25} />}
-                            typeValue={Enums.TypeContact.AMIGO}
+                            value={Enums.TypeContact.AMIGO}
                         />
                     </S.Filters>
                 </div>

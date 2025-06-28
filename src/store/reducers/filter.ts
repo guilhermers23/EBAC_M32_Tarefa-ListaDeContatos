@@ -1,7 +1,7 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
 import * as Enums from "../../utilities/enums/ContactEnums";
 
-type filterStates = { term?: string; valueType?: Enums.TypeContact };
+type filterStates = { term?: string; value?: Enums.TypeContact };
 
 const initialState: filterStates = { term: "" };
 
@@ -14,7 +14,7 @@ const filterSlice = createSlice({
     },
 
     changeFilter: (state, action: PayloadAction<filterStates>) => {
-      state.valueType = action.payload.valueType;
+      state.value = action.payload.value;
     },
   },
 });

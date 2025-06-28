@@ -5,35 +5,32 @@ import * as Enums from "../../utilities/enums/ContactEnums";
 const initialState: Contact[] = [
   {
     id: 1,
-    name: "Guilherme",
-    lastName: "Rosa da Silva",
+    name: "Guilherme Rosa da Silva",
     email: "guilherme@outlook.com",
     phoneNumber: 27996263824,
-    type: Enums.TypeContact.PESSOAL,
+    typeContact: Enums.TypeContact.PESSOAL,
     favorite: false,
   },
   {
     id: 2,
-    name: "Mamãe",
-    lastName: "Rosa",
+    name: "Mamãe Rosa",
     email: "mae@outlook.com",
     phoneNumber: 27996263824,
-    type: Enums.TypeContact.FAMILIA,
+    typeContact: Enums.TypeContact.FAMILIA,
     favorite: true,
   },
   {
     id: 3,
-    name: "Papai",
-    lastName: "Silva",
+    name: "Papai Silva",
     email: "pai@outlook.com",
     phoneNumber: 27996263824,
-    type: Enums.TypeContact.FAMILIA,
+    typeContact: Enums.TypeContact.FAMILIA,
     favorite: false,
   },
 ];
 
 const contactSlice = createSlice({
-  name: "contacts",
+  name: "contact",
   initialState,
   reducers: {
     removeContact: (state, action: PayloadAction<number>) => {

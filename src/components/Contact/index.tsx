@@ -1,15 +1,15 @@
 import { useDispatch } from "react-redux";
+import { useState } from "react";
 import { RxAvatar } from "react-icons/rx";
+import { VscHeart, VscHeartFilled } from "react-icons/vsc";
+import type ClassContact from "../../models/Contact";
+import { editContact, removeContact } from "../../store/reducers/contact";
 import * as GS from "../../styles";
 import * as S from "./styled";
-import type ClassContact from "../../models/Contact";
-import { VscHeart, VscHeartFilled } from "react-icons/vsc";
-import { editContact, removeContact } from "../../store/reducers/contats";
-import { useState } from "react";
 
 type PropsContact = ClassContact;
 
-const Contact = ({ id, name, lastName, email, phoneNumber, type, favorite }: PropsContact) => {
+const Contact = ({ id, name, lastName, email, phoneNumber, typeContact, favorite }: PropsContact) => {
     const dispatch = useDispatch();
     const [edit, setEdit] = useState(false);
     const [newPhone, setNewPhone] = useState(phoneNumber);
@@ -22,7 +22,7 @@ const Contact = ({ id, name, lastName, email, phoneNumber, type, favorite }: Pro
     };
 
     const saveEdit = () => {
-        dispatch(editContact({ id, name, lastName, email: newEmail, phoneNumber: newPhone, type, favorite }));
+        dispatch(editContact({ id, name, lastName, email: newEmail, phoneNumber: newPhone, typeContact, favorite }));
         setEdit(false);
     };
 
@@ -46,7 +46,7 @@ const Contact = ({ id, name, lastName, email, phoneNumber, type, favorite }: Pro
                         onChange={(e) => setNewEmail(e.target.value)}
                         disabled={!edit}>{email}</S.Email>
                 </S.Avatar>
-                <S.Tag tagcolor={type}>{type}</S.Tag>
+                <S.Tag tagcolor={typeContact}>{typeContact}</S.Tag>
                 <S.Phone maxLength={11} disabled={!edit} value={newPhone}
                     onChange={(e) => setNewPhone(Number(e.target.value))}>{phoneNumber}</S.Phone>
                 <span>{!favorite ? <VscHeart /> : <VscHeartFilled />}</span>
