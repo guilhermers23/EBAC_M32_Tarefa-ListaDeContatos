@@ -26,7 +26,7 @@ const Sidebar = ({ showFilter }: PropsSidebar) => {
         <S.Aside>
             {showFilter ? (
                 <div>
-                    <GS.Input type="text" placeholder="Buscar Contato"
+                    <S.inputSearch type="text" placeholder="Buscar Contato"
                         value={term} onChange={onChangeTerm} />
                     <S.Filters>
                         <CardFilter label="Todos" icon={<IoMdContacts size={25} />}

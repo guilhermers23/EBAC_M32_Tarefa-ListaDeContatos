@@ -7,11 +7,10 @@ export const Card = styled.div<PropsCardActive>`
   align-items: center;
   gap: 10px;
   padding: 8px;
-  border: 2px solid
+  border-left: 7px solid
     ${({ active }) => (active === "true" ? "#4C3BCF" : "#a1a1a1")};
   background-color: ${({ active }) => (active === "true" ? "#FFF" : "#fcfcfc")};
   color: ${({ active }) => (active === "true" ? "#4C3BCF" : "#5e5e5e")};
-  border-radius: 7px;
   cursor: pointer;
 `;
 

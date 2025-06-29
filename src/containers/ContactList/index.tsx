@@ -1,7 +1,7 @@
 import { useSelector } from "react-redux";
 import Contact from "../../components/Contact";
-import * as GS from "../../styles";
 import type { RootReducer } from "../../store";
+import * as GS from "../../styles";
 
 const ContactList = () => {
     const contactsList = useSelector((state: RootReducer) => state.contact);

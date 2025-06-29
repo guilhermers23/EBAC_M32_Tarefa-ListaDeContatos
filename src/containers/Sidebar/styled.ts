@@ -1,7 +1,7 @@
 import styled from "styled-components";
+import { Input } from "../../styles";
 
 export const Aside = styled.aside`
-  padding: 16px;
   background-color: var(--color-white);
   height: 100vh;
 `;
@@ -10,5 +10,9 @@ export const Filters = styled.div`
   display: flex;
   flex-direction: column;
   gap: 5px;
-  margin-top: 16px;
+`;
+
+export const inputSearch = styled(Input)`
+  width: 90%;
+  margin: 5%;
 `;

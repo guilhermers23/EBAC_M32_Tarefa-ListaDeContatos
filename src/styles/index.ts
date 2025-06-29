@@ -18,7 +18,7 @@ const GlobalStyled = createGlobalStyle`
   --cor-familia: #eb10b0;
   --cor-pessoal: #069959;
 
-  background-color: var(--color-gray3);
+  background-color: var(--color-gray3)
 }
 
 *{
