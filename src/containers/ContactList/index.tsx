@@ -1,7 +1,8 @@
 import { useSelector } from "react-redux";
-import Contact from "../../components/Contact";
+
 import type { RootReducer } from "../../store";
 import * as GS from "../../styles";
+import CardContact from "../../components/CardContact";
 
 const ContactList = () => {
     const contactsList = useSelector((state: RootReducer) => state.contact);
@@ -39,13 +40,9 @@ const ContactList = () => {
     return (
         <GS.Main>
             <GS.Title as="p">{showMessage(contacts.length)}</GS.Title>
-            <ul>
-                {contacts.map((contact) => (
-                    <li key={contact.id}>
-                        <Contact {...contact} />
-                    </li>
-                ))}
-            </ul>
+            {contacts.map((contact) => (
+                <CardContact key={contact.id} {...contact} />
+            ))}
         </GS.Main >
     )
 };

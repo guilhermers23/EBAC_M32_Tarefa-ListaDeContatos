@@ -9,7 +9,6 @@ import CardFilter from "../../components/CardFilter";
 import { changeTerm } from "../../store/reducers/filter";
 import * as Enums from "../../utilities/enums/ContactEnums";
 import * as S from "./styled";
-import * as GS from "../../styles";
 
 type PropsSidebar = { showFilter: boolean; }
 
@@ -46,7 +45,7 @@ const Sidebar = ({ showFilter }: PropsSidebar) => {
                     </S.Filters>
                 </div>
             ) : (
-                <GS.Button onClick={() => navigate("/")}>Voltar para lista</GS.Button>
+                <S.BackButton onClick={() => navigate("/")}>Voltar para lista</S.BackButton>
             )}
         </S.Aside>
     )

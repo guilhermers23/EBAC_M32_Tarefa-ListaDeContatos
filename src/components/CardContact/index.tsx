@@ -9,7 +9,7 @@ import * as S from "./styled";
 
 type PropsContact = ClassContact;
 
-const Contact = ({ id, name, lastName, email, phoneNumber, typeContact, favorite }: PropsContact) => {
+const CardContact = ({ id, name, email, phoneNumber, typeContact, favorite }: PropsContact) => {
     const dispatch = useDispatch();
     const [edit, setEdit] = useState(false);
     const [newPhone, setNewPhone] = useState(phoneNumber);
@@ -22,7 +22,7 @@ const Contact = ({ id, name, lastName, email, phoneNumber, typeContact, favorite
     };
 
     const saveEdit = () => {
-        dispatch(editContact({ id, name, lastName, email: newEmail, phoneNumber: newPhone, typeContact, favorite }));
+        dispatch(editContact({ id, name, email: newEmail, phoneNumber: newPhone, typeContact, favorite }));
         setEdit(false);
     };
 
@@ -41,7 +41,7 @@ const Contact = ({ id, name, lastName, email, phoneNumber, typeContact, favorite
                 <S.Avatar>
                     <S.TitleContact>
                         {edit && <em>Editando: </em>}
-                        {name} {lastName}</S.TitleContact>
+                        {name}</S.TitleContact>
                     <S.Email value={newEmail}
                         onChange={(e) => setNewEmail(e.target.value)}
                         disabled={!edit}>{email}</S.Email>
@@ -69,4 +69,4 @@ const Contact = ({ id, name, lastName, email, phoneNumber, typeContact, favorite
     )
 };
 
-export default Contact;
+export default CardContact;
