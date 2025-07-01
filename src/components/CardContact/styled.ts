@@ -52,7 +52,6 @@ export const Phone = styled.textarea`
 
 export const Email = styled(Phone)`
   color: var(--color-gray);
-  width: 300px;
 `;
 
 export const ActionsBar = styled.div`

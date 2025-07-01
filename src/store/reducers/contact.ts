@@ -7,7 +7,7 @@ const initialState: Contact[] = [
     id: 1,
     name: "Guilherme Rosa da Silva",
     email: "guilherme@outlook.com",
-    phoneNumber: 27996263824,
+    phoneNumber: "27996263824",
     typeContact: Enums.TypeContact.PESSOAL,
     favorite: false,
   },
@@ -15,7 +15,7 @@ const initialState: Contact[] = [
     id: 2,
     name: "Mamãe Rosa",
     email: "mae@outlook.com",
-    phoneNumber: 27996263824,
+    phoneNumber: "27996263824",
     typeContact: Enums.TypeContact.FAMILIA,
     favorite: true,
   },
@@ -23,7 +23,7 @@ const initialState: Contact[] = [
     id: 3,
     name: "Papai Silva",
     email: "pai@outlook.com",
-    phoneNumber: 27996263824,
+    phoneNumber: "27996263824",
     typeContact: Enums.TypeContact.FAMILIA,
     favorite: false,
   },
@@ -46,8 +46,24 @@ const contactSlice = createSlice({
         state[indexContact] = action.payload;
       }
     },
+
+    addContact: (state, action: PayloadAction<Omit<Contact, "id">>) => {
+      const hasContact = state.find(
+        ({ name }) => name.toLowerCase() === action.payload.name.toLowerCase()
+      );
+      if (hasContact) {
+        alert("Contato já existente na sua lista.");
+      } else {
+        const lastContact = state.length > 0 ? state[state.length - 1] : null;
+        const newContact = {
+          ...action.payload,
+          id: lastContact ? lastContact.id + 1 : 1,
+        };
+        state.push(newContact);
+      }
+    },
   },
 });
 
-export const { removeContact, editContact } = contactSlice.actions;
+export const { removeContact, editContact, addContact } = contactSlice.actions;
 export default contactSlice.reducer;

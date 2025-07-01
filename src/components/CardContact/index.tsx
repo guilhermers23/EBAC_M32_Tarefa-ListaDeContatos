@@ -42,13 +42,13 @@ const CardContact = ({ id, name, email, phoneNumber, typeContact, favorite }: Pr
                     <S.TitleContact>
                         {edit && <em>Editando: </em>}
                         {name}</S.TitleContact>
-                    <S.Email value={newEmail}
+                    <S.Email as={edit ? "textarea" : "email"} value={newEmail}
                         onChange={(e) => setNewEmail(e.target.value)}
                         disabled={!edit}>{email}</S.Email>
                 </S.Avatar>
                 <S.Tag tagcolor={typeContact}>{typeContact}</S.Tag>
-                <S.Phone maxLength={11} disabled={!edit} value={newPhone}
-                    onChange={(e) => setNewPhone(Number(e.target.value))}>{phoneNumber}</S.Phone>
+                <S.Phone as={edit ? "textarea" : "tell"} maxLength={11} disabled={!edit} value={newPhone}
+                    onChange={(e) => setNewPhone(e.target.value)}>{phoneNumber}</S.Phone>
                 <span>{!favorite ? <VscHeart /> : <VscHeartFilled />}</span>
             </S.HeaderContact>
 

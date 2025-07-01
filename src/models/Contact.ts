@@ -4,7 +4,7 @@ class ClassContact {
   typeContact: Enums.TypeContact;
   name: string;
   email: string;
-  phoneNumber: number;
+  phoneNumber: string;
   favorite: boolean;
 
   constructor(
@@ -12,7 +12,7 @@ class ClassContact {
     typeContact: Enums.TypeContact,
     name: string,
     email: string,
-    phoneNumber: number,
+    phoneNumber: string,
     favorite: boolean
   ) {
     this.id = id;

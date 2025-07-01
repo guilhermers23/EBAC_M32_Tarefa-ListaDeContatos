@@ -1,18 +1,31 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import * as Enums from "../../utilities/enums/ContactEnums";
 import * as GS from "../../styles";
 import * as S from "./styled";
+import { addContact } from "../../store/reducers/contact";
 
 const FormRegister = () => {
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [phone, setPhone] = useState('');
-    const [typeContact, setTypeContact] = useState('');
+    const [typeContact, setTypeContact] = useState<Enums.TypeContact>(Enums.TypeContact.PESSOAL);
 
     const registerForm = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
-        console.log(name, email, phone, typeContact);
-        alert("Formulário enviado!");
+        try {
+            dispatch(addContact({ name, email, phoneNumber: phone, typeContact, favorite: false }))
+            navigate("/");
+            setName('');
+            setPhone('');
+            setEmail('');
+            alert("Formulário enviado!");
+        } catch {
+            alert("Ocorreu um erro ao enviar o formulário.");
+        }
     };
 
     return (
@@ -39,7 +52,7 @@ const FormRegister = () => {
                     {Object.values(Enums.TypeContact).map((type) => (
                         <S.Option key={type}>
                             <input type="radio" id={type} value={type} name="type"
-                                onChange={e => setTypeContact(e.target.value)}
+                                onChange={e => setTypeContact(e.target.value as Enums.TypeContact)}
                                 required />
                             <label htmlFor={type}>{type}</label>
                         </S.Option>
