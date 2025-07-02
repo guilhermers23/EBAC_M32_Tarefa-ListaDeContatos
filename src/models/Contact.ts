@@ -5,22 +5,19 @@ class ClassContact {
   name: string;
   email: string;
   phoneNumber: string;
-  favorite: boolean;
 
   constructor(
     id: number,
     typeContact: Enums.TypeContact,
     name: string,
     email: string,
-    phoneNumber: string,
-    favorite: boolean
+    phoneNumber: string
   ) {
     this.id = id;
     this.typeContact = typeContact;
     this.name = name;
     this.email = email;
     this.phoneNumber = phoneNumber;
-    this.favorite = favorite;
   }
 }
 

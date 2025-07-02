@@ -16,48 +16,60 @@ const checkBackgroundColor = (props: PropsTagColor): string => {
 };
 
 export const Card = styled.div`
-  background-color: #fcfcfc;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-white);
+  gap: 5px;
   padding: 16px;
   box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+  border-top: 5px solid #000000;
+  border-right: 5px inset rgb(10, 10, 10);
+  border-bottom: 5px groove #000000;
+  border-left: 10px solid #000000;
   margin-bottom: 32px;
   border-radius: 10px;
 `;
 
-export const HeaderContact = styled.div`
+export const Avatar = styled.span`
   display: flex;
   align-items: center;
-  gap: 15px;
-  margin: 10px;
-`;
-
-export const Avatar = styled.span`
-  align-items: center;
+  justify-content: space-between;
   gap: 5px;
 `;
 
 export const TitleContact = styled.h3`
+  display: flex;
+  gap: 5px;
+  align-items: center;
   font-size: 18px;
   font-weight: bold;
 `;
 
-export const Phone = styled.textarea`
-  font-size: 18px;
-  line-height: 24px;
+export const InfosContact = styled.span`
+  display: flex;
+  align-items: center;
+  gap: 10px;
   height: 25px;
-  font-family: var(--font-mono);
-  background-color: transparent;
-  border: none;
-  resize: none;
-`;
 
-export const Email = styled(Phone)`
-  color: var(--color-gray);
+  label {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 20px;
+    color: rgb(80, 191, 242);
+  }
+  input {
+    font-size: 18px;
+    border: none;
+    line-height: 24px;
+    font-family: var(--font-mono);
+    background-color: transparent;
+  }
 `;
 
 export const ActionsBar = styled.div`
   display: flex;
   justify-content: end;
-  border-top: 2px solid rgba(0, 0, 0, 0.1);
   padding-top: 16px;
 `;
 
@@ -65,9 +77,8 @@ export const Tag = styled.span<PropsTagColor>`
   padding: 4px 8px;
   color: #fff;
   font-weight: bold;
-  font-size: 12px;
+  font-size: 14px;
   background-color: ${(props) => checkBackgroundColor(props)};
   border-radius: 8px;
   margin-right: 16px;
-  display: inline-block;
 `;

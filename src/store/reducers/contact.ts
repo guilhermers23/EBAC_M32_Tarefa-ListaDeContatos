@@ -9,7 +9,6 @@ const initialState: Contact[] = [
     email: "guilherme@outlook.com",
     phoneNumber: "27996263824",
     typeContact: Enums.TypeContact.PESSOAL,
-    favorite: false,
   },
   {
     id: 2,
@@ -17,7 +16,6 @@ const initialState: Contact[] = [
     email: "mae@outlook.com",
     phoneNumber: "27996263824",
     typeContact: Enums.TypeContact.FAMILIA,
-    favorite: true,
   },
   {
     id: 3,
@@ -25,7 +23,6 @@ const initialState: Contact[] = [
     email: "pai@outlook.com",
     phoneNumber: "27996263824",
     typeContact: Enums.TypeContact.FAMILIA,
-    favorite: false,
   },
 ];
 

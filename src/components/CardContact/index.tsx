@@ -1,15 +1,16 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { RxAvatar } from "react-icons/rx";
-import { VscHeart, VscHeartFilled } from "react-icons/vsc";
 import type ClassContact from "../../models/Contact";
 import { editContact, removeContact } from "../../store/reducers/contact";
 import * as GS from "../../styles";
 import * as S from "./styled";
+import { MdOutlineEmail } from "react-icons/md";
+import { BsTelephone } from "react-icons/bs";
 
 type PropsContact = ClassContact;
 
-const CardContact = ({ id, name, email, phoneNumber, typeContact, favorite }: PropsContact) => {
+const CardContact = ({ id, name, email, phoneNumber, typeContact }: PropsContact) => {
     const dispatch = useDispatch();
     const [edit, setEdit] = useState(false);
     const [newPhone, setNewPhone] = useState(phoneNumber);
@@ -22,7 +23,7 @@ const CardContact = ({ id, name, email, phoneNumber, typeContact, favorite }: Pr
     };
 
     const saveEdit = () => {
-        dispatch(editContact({ id, name, email: newEmail, phoneNumber: newPhone, typeContact, favorite }));
+        dispatch(editContact({ id, name, email: newEmail, phoneNumber: newPhone, typeContact }));
         setEdit(false);
     };
 
@@ -36,21 +37,30 @@ const CardContact = ({ id, name, email, phoneNumber, typeContact, favorite }: Pr
 
     return (
         <S.Card>
-            <S.HeaderContact>
-                <RxAvatar size={40} />
-                <S.Avatar>
-                    <S.TitleContact>
-                        {edit && <em>Editando: </em>}
-                        {name}</S.TitleContact>
-                    <S.Email as={edit ? "textarea" : "email"} value={newEmail}
-                        onChange={(e) => setNewEmail(e.target.value)}
-                        disabled={!edit}>{email}</S.Email>
-                </S.Avatar>
+            <S.Avatar>
+                <S.TitleContact>
+                    <RxAvatar size={40} />
+                    {edit && <em>Editando: </em>}
+                    {name}
+                </S.TitleContact>
                 <S.Tag tagcolor={typeContact}>{typeContact}</S.Tag>
-                <S.Phone as={edit ? "textarea" : "tell"} maxLength={11} disabled={!edit} value={newPhone}
-                    onChange={(e) => setNewPhone(e.target.value)}>{phoneNumber}</S.Phone>
-                <span>{!favorite ? <VscHeart /> : <VscHeartFilled />}</span>
-            </S.HeaderContact>
+            </S.Avatar>
+
+            <S.InfosContact>
+                <label htmlFor="email"><MdOutlineEmail /></label>
+                <input type="email" id="email"
+                    value={newEmail} onChange={e => setNewEmail(e.target.value)}
+                    disabled={!edit}
+                />
+            </S.InfosContact>
+
+            <S.InfosContact>
+                <label htmlFor="phone"><BsTelephone /></label>
+                <input type="tel" id="phone"
+                    maxLength={11} disabled={!edit} value={newPhone}
+                    onChange={e => setNewPhone(e.target.value)}
+                />
+            </S.InfosContact>
 
             <S.ActionsBar>
                 {!edit ? (

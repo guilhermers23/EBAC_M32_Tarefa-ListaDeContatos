@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { addContact } from "../../store/reducers/contact";
 import * as Enums from "../../utilities/enums/ContactEnums";
 import * as GS from "../../styles";
 import * as S from "./styled";
-import { addContact } from "../../store/reducers/contact";
 
 const FormRegister = () => {
     const dispatch = useDispatch();
@@ -17,7 +17,7 @@ const FormRegister = () => {
     const registerForm = (event: React.FormEvent<HTMLFormElement>) => {
         event.preventDefault();
         try {
-            dispatch(addContact({ name, email, phoneNumber: phone, typeContact, favorite: false }))
+            dispatch(addContact({ name, email, phoneNumber: phone, typeContact }))
             navigate("/");
             setName('');
             setPhone('');

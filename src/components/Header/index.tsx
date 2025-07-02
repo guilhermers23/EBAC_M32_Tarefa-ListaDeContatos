@@ -1,7 +1,7 @@
 import { MdOutlineContactPhone } from "react-icons/md";
 import * as S from "./styled";
 
-const Navbar = () => (
+const Header = () => (
     <S.Header>
         <S.Logo>
             <MdOutlineContactPhone size='25' />
@@ -10,4 +10,4 @@ const Navbar = () => (
     </S.Header>
 );
 
-export default Navbar;
+export default Header;
