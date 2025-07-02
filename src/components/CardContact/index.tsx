@@ -1,25 +1,25 @@
 import { useDispatch } from "react-redux";
 import { useState } from "react";
 import { RxAvatar } from "react-icons/rx";
+import { MdOutlineEmail } from "react-icons/md";
 import type ClassContact from "../../models/Contact";
+import { BsTelephone } from "react-icons/bs";
 import { editContact, removeContact } from "../../store/reducers/contact";
 import * as GS from "../../styles";
 import * as S from "./styled";
-import { MdOutlineEmail } from "react-icons/md";
-import { BsTelephone } from "react-icons/bs";
 
 type PropsContact = ClassContact;
 
-const CardContact = ({ id, name, email, phoneNumber, typeContact }: PropsContact) => {
+const CardContact = ({ id, name, email: originalEmail, phoneNumber: originalPhoneNumber, typeContact }: PropsContact) => {
     const dispatch = useDispatch();
     const [edit, setEdit] = useState(false);
-    const [newPhone, setNewPhone] = useState(phoneNumber);
-    const [newEmail, setNewEmail] = useState(email);
+    const [newEmail, setNewEmail] = useState(originalEmail);
+    const [newPhone, setNewPhone] = useState(originalPhoneNumber);
 
     const cancelEdit = () => {
         setEdit(false);
-        setNewPhone(phoneNumber);
-        setNewEmail(email);
+        setNewPhone(originalPhoneNumber);
+        setNewEmail(originalEmail);
     };
 
     const saveEdit = () => {
@@ -49,7 +49,7 @@ const CardContact = ({ id, name, email, phoneNumber, typeContact }: PropsContact
             <S.InfosContact>
                 <label htmlFor="email"><MdOutlineEmail /></label>
                 <input type="email" id="email"
-                    value={newEmail} onChange={e => setNewEmail(e.target.value)}
+                    value={newEmail} onChange={(e) => setNewEmail(e.target.value)}
                     disabled={!edit}
                 />
             </S.InfosContact>
@@ -58,7 +58,7 @@ const CardContact = ({ id, name, email, phoneNumber, typeContact }: PropsContact
                 <label htmlFor="phone"><BsTelephone /></label>
                 <input type="tel" id="phone"
                     maxLength={11} disabled={!edit} value={newPhone}
-                    onChange={e => setNewPhone(e.target.value)}
+                    onChange={(e) => setNewPhone(e.target.value)}
                 />
             </S.InfosContact>
 

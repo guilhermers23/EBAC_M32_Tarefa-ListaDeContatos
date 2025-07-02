@@ -1,50 +1,33 @@
 import { createSlice, type PayloadAction } from "@reduxjs/toolkit";
-import type Contact from "../../models/Contact";
-import * as Enums from "../../utilities/enums/ContactEnums";
+import {
+  loadContactsFromLocalStorage,
+  saveContactToLocalStorage,
+} from "../../services/localStorage";
+import type ClassContact from "../../models/Contact";
 
-const initialState: Contact[] = [
-  {
-    id: 1,
-    name: "Guilherme Rosa da Silva",
-    email: "guilherme@outlook.com",
-    phoneNumber: "27996263824",
-    typeContact: Enums.TypeContact.PESSOAL,
-  },
-  {
-    id: 2,
-    name: "Mamãe Rosa",
-    email: "mae@outlook.com",
-    phoneNumber: "27996263824",
-    typeContact: Enums.TypeContact.FAMILIA,
-  },
-  {
-    id: 3,
-    name: "Papai Silva",
-    email: "pai@outlook.com",
-    phoneNumber: "27996263824",
-    typeContact: Enums.TypeContact.FAMILIA,
-  },
-];
+const initialState: ClassContact[] = loadContactsFromLocalStorage();
 
 const contactSlice = createSlice({
   name: "contact",
   initialState,
   reducers: {
     removeContact: (state, action: PayloadAction<number>) => {
-      const setState = state.filter(({ id }) => id !== action.payload);
-      return setState;
+      const newState = state.filter(({ id }) => id !== action.payload);
+      saveContactToLocalStorage(newState);
+      return newState;
     },
 
-    editContact: (state, action: PayloadAction<Contact>) => {
+    editContact: (state, action: PayloadAction<ClassContact>) => {
       const indexContact = state.findIndex(
         ({ id }) => id === action.payload.id
       );
-      if (indexContact > 0) {
+      if (indexContact >= 0) {
         state[indexContact] = action.payload;
+        saveContactToLocalStorage(state);
       }
     },
 
-    addContact: (state, action: PayloadAction<Omit<Contact, "id">>) => {
+    addContact: (state, action: PayloadAction<Omit<ClassContact, "id">>) => {
       const hasContact = state.find(
         ({ name }) => name.toLowerCase() === action.payload.name.toLowerCase()
       );
@@ -57,6 +40,7 @@ const contactSlice = createSlice({
           id: lastContact ? lastContact.id + 1 : 1,
         };
         state.push(newContact);
+        saveContactToLocalStorage(state);
       }
     },
   },

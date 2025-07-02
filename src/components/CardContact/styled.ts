@@ -59,6 +59,7 @@ export const InfosContact = styled.span`
     color: rgb(80, 191, 242);
   }
   input {
+    width: 100%;
     font-size: 18px;
     border: none;
     line-height: 24px;

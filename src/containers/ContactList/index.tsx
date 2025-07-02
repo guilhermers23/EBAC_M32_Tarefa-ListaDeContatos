@@ -3,6 +3,7 @@ import type { RootReducer } from "../../store";
 import CardContact from "../../components/CardContact";
 import * as GS from "../../styles";
 import * as S from "./styled";
+import { inserContactListExemple } from "../../db/dataContacts";
 
 const ContactList = () => {
     const contactsList = useSelector((state: RootReducer) => state.contact);
@@ -36,18 +37,23 @@ const ContactList = () => {
     };
 
     const contacts = filterContacts();
+    //Carregar Tarefas para exemplo
+    const loadContactsLocal = () => {
+        inserContactListExemple();
+        window.location.reload();
+    };
 
     return (
-        <>
-            <GS.Main>
-                <GS.Title as="p">{showMessage(contacts.length)}</GS.Title>
-                <S.SectionCard>
-                    {contacts.map((contact) => (
-                        <CardContact key={contact.id} {...contact} />
-                    ))}
-                </S.SectionCard>
-            </GS.Main >
-        </>
+        <GS.Main>
+            <GS.Title as="p">{showMessage(contacts.length)}
+            </GS.Title>
+            {contactsList.length === 0 && <GS.Button onClick={loadContactsLocal}>Carregar contatos de exemplo</GS.Button>}
+            <S.SectionCard>
+                {contacts.map((contact) => (
+                    <CardContact key={contact.id} {...contact} />
+                ))}
+            </S.SectionCard>
+        </GS.Main >
     )
 };
 

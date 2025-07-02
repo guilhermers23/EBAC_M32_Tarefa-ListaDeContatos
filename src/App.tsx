@@ -1,4 +1,3 @@
-import { RouterProvider } from "react-router-dom";
 import { Provider } from "react-redux";
 
 import GlobalStyled from "./styles";
@@ -11,7 +10,7 @@ const App = () => {
     <Provider store={store}>
       <GlobalStyled />
       <Header />
-      <RouterProvider router={AppRoutes} />
+      <AppRoutes />
     </Provider>
   )
 };
