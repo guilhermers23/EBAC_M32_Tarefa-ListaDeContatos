@@ -21,7 +21,6 @@ export const Card = styled.div`
   background-color: var(--color-white);
   gap: 5px;
   padding: 16px;
-  box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
   border-top: 5px solid #000000;
   border-right: 5px inset rgb(10, 10, 10);
   border-bottom: 5px groove #000000;

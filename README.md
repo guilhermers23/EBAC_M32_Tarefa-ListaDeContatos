@@ -1,69 +1,95 @@
-# React + TypeScript + Vite
+# 📇 EBAC Módulo 32 – Lista de Contatos
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 📌 Descrição
 
-Currently, two official plugins are available:
+Aplicativo de gerenciamento de contatos criado com **React**, **TypeScript** e **Vite**, desenvolvido como tarefa do Módulo 32 do curso Full Stack Python da EBAC. Permite adicionar, editar, visualizar e remover contatos com uma interface leve e moderna.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## ⚙️ Tecnologias Utilizadas
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React** + **Vite** – Interface rápida com hot-reload
+- **TypeScript** – Tipagem estática para maior segurança
+- **Redux Toolkit** – Governança estruturada de estado
+- **Styled Components** – Estilização CSS-in-JS modular
+- **ESLint + Prettier** – Padronização de código
+- **Vite + plugins React** – Ambiente de desenvolvimento otimizado com HMR
 
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
+## 🎯 Funcionalidades
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Adicionar novos contatos
+- Editar informações de contatos existentes
+- Excluir contatos
+- Listagem clara e organizada dos contatos
+- Interface responsiva e intuitiva
+
+---
+
+## 🗂️ Estrutura do Projeto
+
+```
+├── public/             # Assets estáticos
+├── src/
+│   ├── components/     # Formulários e lista de contatos
+│   ├── store/          # Redux slices e configuração global
+│   ├── App.tsx         # Componente raiz
+│   ├── main.tsx        # Entrada da aplicação
+│   └── styles/         # Estilizações com Styled Components
+├── index.html
+├── vite.config.ts      # Configuração do Vite
+└── tsconfig.json       # Configuração do TypeScript
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## ⚡ Scripts Disponíveis
 
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm run dev      # Inicia o ambiente de desenvolvimento
+npm run build    # Build para produção
+npm run lint     # Checagem com ESLint
+npm run preview  # Pré-visualização do build
 ```
+
+---
+
+## 🚀 Executando Localmente
+
+1. Clone o repositório
+
+   ```bash
+   git clone https://github.com/guilhermers23/EBAC_M32_Tarefa-ListaDeContatos.git
+   cd EBAC_M32_Tarefa-ListaDeContatos
+   ```
+
+2. Instale as dependências
+
+   ```bash
+   npm install
+   ```
+
+3. Inicie o modo dev
+
+   ```bash
+   npm run dev
+   ```
+
+4. Acesse `http://localhost:5173` (ou porta indicada pelo Vite)
+
+---
+
+## 🛠️ Sugestões de Melhoria
+
+- Implementar filtros e busca por campo (nome, telefone, etc.)
+- Adicionar paginação ou scroll infinito
+- Inclusão de testes (Jest + React Testing Library)
+- Controle de estados de carregamento e erros
+- Integração com um back-end ou persistência (ex: Firebase, MongoDB)
+
+---
+
+## 📝 Licença
+
+Licença MIT. Contribuições são bem-vindas!
