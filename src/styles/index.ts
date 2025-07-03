@@ -35,12 +35,19 @@ export const Container = styled.div`
   margin: 0 auto;
   display: grid;
   grid-template-columns: 225px auto;
+  @media (max-width: 720px) {
+    grid-template-columns: 25% auto;
+  }
+  @media (max-width: 600px) {
+    grid-template-columns: auto;
+  }
 `;
 
 export const Main = styled.main`
   padding: 0 40px;
   height: 100vh;
-  overflow-y: scroll;
+  overflow-y: auto;
+  margin-bottom: 26px;
 `;
 
 export const Title = styled.h2`
